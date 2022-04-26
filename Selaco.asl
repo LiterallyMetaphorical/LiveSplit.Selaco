@@ -1,7 +1,7 @@
 state("SELACO")
 {
 	int loading      : 0x109FCD0; 
-    string50 mission : 0x11D8804;
+    string50 mission : 0x11D8804; // Loaded level is stored as a string without UTF-16
 }
 
 startup
@@ -35,10 +35,14 @@ start
 	return (old.loading != 0 && current.loading == 0 && current.mission.Contains("Invasion"));
 }
 
-split
-{
-    return current.mission != old.mission;
+split 
+{  
+    return
+		(current.mission.Contains("Pathfinder")) && (old.mission.Contains("Invasion"))   || 
+		(current.mission.Contains("Lockdown"))   && (old.mission.Contains("Pathfinder")) ||  
+		(current.mission.Contains("Pathfinder")) && (old.mission.Contains("Lockdown"));
 }
+
 
 isLoading
 {
