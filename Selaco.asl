@@ -1,6 +1,6 @@
 state("SELACO")
 {
-  int loading      : 0x109FCE0; 
+  int loading      : 0x118B0D0; 
   string50 mission : 0x11D8815; // Loaded level is stored as a string without UTF-16
 }
 
