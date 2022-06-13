@@ -1,7 +1,7 @@
 state("SELACO")
 {
-	int loading      : 0x109FCD0; 
-    string50 mission : 0x11D8804; // Loaded level is stored as a string without UTF-16
+  int loading      : 0x109FCE0; 
+  string50 mission : 0x11D8815; // Loaded level is stored as a string without UTF-16
 }
 
 startup
@@ -26,7 +26,7 @@ startup
 
 onStart
 {
-    // This is part of a "cycle fix", makes sure the timer always starts at 0.00
+    // This is a "cycle fix" that makes sure the timer always starts at 0.00
     timer.IsGameTimePaused = true;
 }
 
@@ -51,5 +51,6 @@ isLoading
 
 update
 { 
-  // print(current.mission.ToString());  
+ print(current.mission.ToString());  
+ print(current.loading.ToString());
 } 
