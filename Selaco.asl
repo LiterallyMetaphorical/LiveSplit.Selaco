@@ -43,6 +43,6 @@ isLoading
 
 update
 {
- print(current.onNewCampaign.ToString());
- print(current.loading.ToString());
+ //print(current.onNewCampaign.ToString());
+ //print(current.loading.ToString());
 } 
