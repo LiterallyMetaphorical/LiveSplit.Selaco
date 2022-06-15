@@ -1,8 +1,9 @@
 state("SELACO")
 {
-  int loading      : 0x118B0D0; 
-  string50 mission : 0x11D8815; // Loaded level is stored as a string without UTF-16
+  int loading       : 0x118B0D0; 
+  int onNewCampaign : 0x7EF000;
 }
+//  string50 mission  : 0x11D8815; // Loaded level is stored as a string without UTF-16 - BUGGY AS FUCK DOESNT WORK LOL
 
 startup
   {
@@ -32,17 +33,8 @@ onStart
 
 start
 {
-	return (old.loading != 0 && current.loading == 0 && current.mission.Contains("Invasion"));
+	return old.onNewCampaign == 0 && current.onNewCampaign != 0 && old.loading == 0 && current.loading != 0;
 }
-
-split 
-{  
-    return
-		(current.mission.Contains("Pathfinder")) && (old.mission.Contains("Invasion"))   || 
-		(current.mission.Contains("Lockdown"))   && (old.mission.Contains("Pathfinder")) ||  
-		(current.mission.Contains("Pathfinder")) && (old.mission.Contains("Lockdown"));
-}
-
 
 isLoading
 {
@@ -50,7 +42,7 @@ isLoading
 }
 
 update
-{ 
- print(current.mission.ToString());  
+{
+ print(current.onNewCampaign.ToString());
  print(current.loading.ToString());
 } 
