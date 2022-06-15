@@ -33,7 +33,7 @@ onStart
 
 start
 {
-	return old.onNewCampaign == 0 && current.onNewCampaign != 0 && current.loading != 0;
+	return old.onNewCampaign == 0 && current.loading != 0;
 }
 
 isLoading
